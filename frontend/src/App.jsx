@@ -7,9 +7,16 @@ import Login from './components/Login';
 import Signup from './components/SignUp';
 import Dashboard from './components/Dashboard'; // Acts as the layout for /dashboard/*
 import AdminPanel from './components/AdminPanel';
-import UploadHistory from './components/UploadHistory'; // Component for upload history
-import DashboardHome from './components/DashboardHome'; // New component for /dashboard main content
+import UploadHistory from './components/UploadHistory';
+import DashboardHome from './components/DashboardHome'; // For /dashboard main content
 import { AuthProvider, useAuth } from './context/AuthContext';
+
+// Import your chart page components
+import GanttChartPage from './components/GanttChartPage';
+import SCurvePage from './components/SCurvePage';
+import TornadoChartPage from './components/TornadoChartPage';
+import ScatterPlotPage from './components/ScatterPlotPage';
+import CashFlowPage from './components/CashFlowPage';
 
 const PrivateRoute = ({ children, adminOnly = false }) => {
   const { token, isAdmin } = useAuth();
@@ -17,7 +24,7 @@ const PrivateRoute = ({ children, adminOnly = false }) => {
     return <Navigate to="/login" />;
   }
   if (adminOnly && !isAdmin) {
-    return <Navigate to="/dashboard" />; // Or an unauthorized page
+    return <Navigate to="/dashboard" />;
   }
   return children;
 };
@@ -40,12 +47,14 @@ function App() {
               }
             >
               {/* Nested routes render inside Dashboard's <Outlet /> */}
-              <Route index element={<DashboardHome />} /> {/* Content for /dashboard itself */}
+              <Route index element={<DashboardHome />} /> 
               <Route path="upload-history" element={<UploadHistory />} />
-              {/* You would add other dashboard sub-page routes here:
-                e.g., <Route path="gantt-chart" element={<GanttChartComponent />} />
-                      <Route path="s-curve" element={<SCurveComponent />} /> 
-              */}
+              {/* Routes for your new chart pages */}
+              <Route path="gantt-chart" element={<GanttChartPage />} />
+              <Route path="s-curve" element={<SCurvePage />} />
+              <Route path="tornado-chart" element={<TornadoChartPage />} />
+              <Route path="scatter-plot" element={<ScatterPlotPage />} />
+              <Route path="cash-flow" element={<CashFlowPage />} />
             </Route>
 
             <Route
@@ -57,8 +66,6 @@ function App() {
               }
             />
             <Route path="/" element={<Navigate to="/login" />} />
-            {/* Optional: Add a 404 Not Found Page */}
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Routes>
         </Router>
       </AuthProvider>
