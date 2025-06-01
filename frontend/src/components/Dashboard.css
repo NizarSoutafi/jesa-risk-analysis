@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f6f5;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(135deg, #005670 0%, #003d4f 100%);
+  color: white;
+  padding: 30px 20px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header h3 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d9363e;
+  transform: translateY(-2px);
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.sidebar-section h4 {
+  margin: 0 0 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #a8e4ff;
+}
+
+.collapsible-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapsible-header span {
+  font-size: 0.8rem;
+}
+
+.risk-settings {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.risk-settings.open {
+  max-height: 600px;
+}
+
+.sidebar-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-section ul li {
+  margin: 10px 0;
+}
+
+.sidebar-section ul li button {
+  background: none;
+  border: none;
+  color: #d0eaff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 0;
+  width: 100%;
+  text-align: left;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar-section ul li button:hover {
+  color: white;
+  padding-left: 10px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #d0eaff;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #a8e4ff;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.input-group input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #a8e4ff;
+  border-radius: 5px;
+}
+
+.input-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.input-group span {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #d0eaff;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.added-risks h5 {
+  margin: 15px 0 10px;
+  font-size: 1rem;
+  color: #a8e4ff;
+}
+
+.added-risks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.added-risks ul li {
+  font-size: 0.9rem;
+  color: #d0eaff;
+  margin: 5px 0;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  padding: 40px;
+  background-color: white;
+  min-height: 100vh;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  color: #005670;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.card {
+  background-color: #f8fafc;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h2, .card h3, .card h4 {
+  color: #005670;
+  margin-bottom: 15px;
+}
+
+.upload-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.file-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.file-input::-webkit-file-upload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: #ff4d4f;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.issues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.issues-list li {
+  background-color: #fef2f2;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: #dc2626;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #005670;
+  color: white;
+  font-weight: 600;
+}
+
+td {
+  background-color: #f8fafc;
+}
+
+.duration-estimates {
+  margin-top: 20px;
+}
+
+.estimate-bar {
+  margin-bottom: 15px;
+}
+
+.estimate-bar span {
+  display: block;
+  font-size: 1rem;
+  color: #005670;
+  margin-bottom: 5px;
+}
+
+.bar {
+  height: 10px;
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+}
+
+.optimistic {
+  background-color: #34d399;
+}
+
+.most-likely {
+  background-color: #60a5fa;
+}
+
+.pessimistic {
+  background-color: #f87171;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .upload-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
